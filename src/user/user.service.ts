@@ -1,11 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { User } from './interface/user';
+import { Injectable, Req } from '@nestjs/common';
+import { Request } from 'express';
 
 @Injectable()
 export class UserService {
-  public users: User[];
-
-  getUser(): User[] {
-    return this.users
+  get() {
+    return 'pranav';
+  }
+  create(req: Request) {
+    return req.body;
   }
 }
