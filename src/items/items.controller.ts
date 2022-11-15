@@ -4,8 +4,6 @@ import {
   Post,
   Patch,
   Body,
-  Res,
-  Req,
   Param,
 } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
@@ -32,7 +30,7 @@ export class ItemsController {
   }
 
   @Patch(':id')
-  updateOne(@Param('id') id, @Body() createItemDto: CreateItemDto): string {
-    return `${id}`;
+  updateOne(@Param('id') id, @Body() createItemDto: CreateItemDto): Promise<Item> {
+    return this.itemService.updateItem(id,createItemDto)
   }
 }

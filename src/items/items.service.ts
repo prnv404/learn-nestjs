@@ -18,4 +18,10 @@ export class ItemsService {
     const newItem = new this.ItemModel(item)
     return await newItem.save()
   }
+
+  async updateItem(id: string, item: Item): Promise<Item>{
+    const updateItem = await this.ItemModel.findByIdAndUpdate({ _id: id }, item, { new: true })
+    return updateItem
+  }
 }
+
